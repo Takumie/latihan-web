@@ -5,8 +5,12 @@
  */
 package com.ferdy.bootcamp.latihan.perpustakaan.controller;
 
+import com.ferdy.bootcamp.latihan.perpustakaan.dao.BukuDao;
 import com.ferdy.bootcamp.latihan.perpustakaan.model.Buku;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +37,14 @@ public class BukuAddController extends HttpServlet {
         buku.setTahunTerbit(Integer.valueOf(req.getParameter("tahunTerbit")));
         buku.setPengarang(req.getParameter("pengarang"));
         buku.setJumlahBuku(Integer.valueOf(req.getParameter("jumlahBuku")));
+        
+        BukuDao bukuDao = new BukuDao();
+        try {
+            bukuDao.save(buku);
+        } catch (SQLException ex) {
+            Logger.getLogger(BukuAddController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     

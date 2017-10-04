@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  */
 public class BukuDao {
 
-    public void save() throws SQLException {
+    public void save(Buku x) throws SQLException {
         KoneksiDatabase koneksiDb = new KoneksiDatabase();
         DataSource dataSource = koneksiDb.getDataSource();
         Connection connection = dataSource.getConnection();
@@ -27,10 +27,10 @@ public class BukuDao {
         //language=Postgresql
         String sql = "INSERT INTO perpus.buku (judul_buku, tahun_terbit,pengarang, jumlah_buku) VALUES (?,?,?,?)";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, "Belajar Coding Sebenarnya");
-        statement.setInt(2, 2017);
-        statement.setString(3, "Muhammad Ferdy Wardianto");
-        statement.setInt(4, 20);
+        statement.setString(1, x.getJudulBuku());
+        statement.setInt(2, x.getTahunTerbit());
+        statement.setString(3, x.getPengarang());
+        statement.setInt(4, x.getJumlahBuku());
         statement.executeUpdate();
         statement.close();
         connection.close();

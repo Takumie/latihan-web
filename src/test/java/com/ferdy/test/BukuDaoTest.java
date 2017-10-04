@@ -1,6 +1,7 @@
 package com.ferdy.test;
 
 import com.ferdy.bootcamp.latihan.perpustakaan.dao.BukuDao;
+import com.ferdy.bootcamp.latihan.perpustakaan.model.Buku;
 import java.sql.SQLException;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -20,6 +21,6 @@ public class BukuDaoTest extends TestCase {
     
     @Test
     public void testSaveDataBuku() throws SQLException{
-        bukuDao.save();
+//        bukuDao.save(new Buku());
     }
 }
