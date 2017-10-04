@@ -16,7 +16,7 @@ import lombok.Data;
 public class Buku {
     private Integer id;
     private String judulBuku;
-    private String tahunTerbit;
+    private Integer tahunTerbit;
     private String pengarang;
     private Integer jumlahBuku;   
     

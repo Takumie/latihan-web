@@ -12,7 +12,7 @@
         <title>Tambah Buku</title>
     </head>
     <body>
-        <form action="${pageContext.servletContext.contextPath}/buku/proses/tambah" method="post">
+        <form action="${pageContext.servletContext.contextPath}/buku/new" method="post">
             <div>
                 <label for="judulBuku">Judul Buku :</label>
                 <input type="text" name="judulBuku" id="judulBuku">
