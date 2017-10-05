@@ -9,7 +9,10 @@ import com.ferdy.bootcamp.latihan.perpustakaan.config.KoneksiDatabase;
 import com.ferdy.bootcamp.latihan.perpustakaan.model.Buku;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 
@@ -42,8 +45,32 @@ public class BukuDao {
     public void delete() {
     }
 
-    public List<Buku> findAll() {
-        return null;
+    public List<Buku> findAll() throws SQLException {
+        List<Buku> listBuku = new ArrayList<>();
+
+        //inisialisasi koneksi ke database
+        KoneksiDatabase koneksiDatabase = new KoneksiDatabase();
+        DataSource dataSource = koneksiDatabase.getDataSource();
+        Connection connection = dataSource.getConnection();
+        
+        //execute database query
+        String sql = "select * from perpus.buku";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()){
+            Buku buku = new Buku();
+            buku.setId(resultSet.getInt("id"));
+            buku.setJudulBuku(resultSet.getString("judul_buku"));
+            buku.setJumlahBuku(resultSet.getInt("jumlah_buku"));
+            buku.setPengarang(resultSet.getString("pengarang"));
+            buku.setTahunTerbit(resultSet.getInt("tahun_terbit"));
+            listBuku.add(buku);
+        }
+        
+        resultSet.close();
+        statement.close();
+        connection.close();
+        return listBuku;
     }
 
     public Buku findById(Integer idBuku) {
