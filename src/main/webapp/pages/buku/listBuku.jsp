@@ -33,7 +33,8 @@
                     <td>${sebuahBuku.jumlahBuku}</td>
                     <td>${sebuahBuku.pengarang}</td>
                     <td>
-                        <a href="${pageContext.servletContext.contextPath}/buku/delete?kodeBuku=${sebuahBuku.id}">Hapus</a>                        
+                        <a href="${pageContext.servletContext.contextPath}/buku/delete?kodeBuku=${sebuahBuku.id}">Hapus</a> | 
+                        <a href="${pageContext.servletContext.contextPath}/buku/edit?kodeBuku=${sebuahBuku.id}">Edit</a>
                     </td>
                 </tr>
                 </c:forEach>
