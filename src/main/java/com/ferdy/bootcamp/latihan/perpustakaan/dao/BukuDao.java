@@ -42,7 +42,20 @@ public class BukuDao {
     public void update() {
     }
 
-    public void delete() {
+    public void delete(Integer idBuku) throws SQLException {
+        KoneksiDatabase koneksiDatabase = new KoneksiDatabase();
+        DataSource dataSource = koneksiDatabase.getDataSource();
+        Connection connection = dataSource.getConnection();
+        
+        String sql = "delete from perpus.buku where id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setInt(1, idBuku);
+        
+        statement.executeUpdate();
+        statement.close();
+        connection.close();
+        
     }
 
     public List<Buku> findAll() throws SQLException {
