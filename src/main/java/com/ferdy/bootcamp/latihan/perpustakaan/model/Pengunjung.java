@@ -5,7 +5,9 @@
  */
 package com.ferdy.bootcamp.latihan.perpustakaan.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -13,6 +15,8 @@ import lombok.Data;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Pengunjung {
     private Integer id;
     private String nama;
